@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./js",
+    "paths": {
+      "@wwwb/*": ["*"],
+      "@base": ["publish/base"],
+      "@utils": ["publish/common/utils"],
+      "@constants": ["publish/common/constants"],
+      "@dtcomponents/*": ["publish/components/dtcomponents/*"],
+      "@components/*": ["publish/components/*"],
+    }
+  }
+}
