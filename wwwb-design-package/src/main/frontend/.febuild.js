@@ -2,7 +2,6 @@ const path = require('path');
 const rootPath = path.resolve('../');
 const sourcesPath = path.join(rootPath,'frontend');
 const destinationPath = path.join(rootPath,'../../target/package/jcr_root/apps/wwwb/clientlibs');
-const srcPath = path.join(rootPath,'../../src');
 const common = path.join(sourcesPath, 'common');
 const nodeModules = path.join(rootPath, 'frontend', 'node_modules');
 const defaultConfig = require('@netcentric/fe-build/config');
@@ -32,11 +31,11 @@ module.exports = {
       ['postcss-extract-media-query',
         {
           output: {
-            path: path.join(destinationPath),
+            path: destinationPath,
             name: '[path]/[query]/[name]-[query].[ext]'
           },
           src: {
-            path: srcPath,
+            path: destinationPath,
           },
           queries: {
             'screen and (min-width: 1200px)': 'xlarge',
@@ -47,7 +46,12 @@ module.exports = {
         }
       ],
 
-    ]
+    ],
+    extraEntries : {
+      extension: 'css',
+      cwd: destinationPath,
+      filenamePattern: 'clientlibs-*',
+    }
   },
   optimization: {
     splitChunks: false,
